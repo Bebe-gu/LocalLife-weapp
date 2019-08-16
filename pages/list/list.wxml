@@ -1,0 +1,47 @@
+<view class="page">
+    <view class="page_hd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">
+                取消
+            </view>
+        </view>
+    </view>
+    <view class="page_bd">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{shops}}" wx:key="{{item.id}}">
+                <view class="weui-cell__hd">
+                    <image src="{{item.images[0]}}" style="margin-right: 15px;vertical-align: middle;width:60px; height: 60px;"></image>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="list-title">{{item.name}}</view>
+                    <view class="list-text">电话：{{item.phone}}</view>
+                    <view class="list-text">地址：{{item.address}}</view>
+                    <view class="list-text">营业时间：{{item.businessHours}}</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access list-text">
+                    <view class="count">{{item.score}}</view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="weui-loading__wrp loading" wx:if="{{hasMore}}">
+        <view class="weui-loading"></view>
+        <text class="loading-text" >数据正在加载中</text>
+    </view>
+    <view class="nomore" wx:else="{{hasMore}}">
+        <text >没有更多了</text>
+    </view>
+</view>

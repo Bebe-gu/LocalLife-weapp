@@ -1,0 +1,63 @@
+.slides {
+    width: 100%;
+    height: 380rpx;
+}
+
+.slides image {
+    width: 100%;
+    height: 100%;
+}
+
+.grids {
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+    box-sizing: border-box;
+    margin-bottom:5rpx; 
+}
+
+.grids .item {
+    display: flex;
+    flex-direction: column;
+    width: 33.333%;
+    height: 200rpx;
+    justify-content: center;
+    align-items: center;
+    border-right: 1rpx solid #eee;
+    border-top: 1rpx solid #eee;
+    box-sizing: border-box;
+    
+}
+
+.grids .item image {
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.grids .item text {
+    font-size: 24rpx;
+    display: block;
+    padding-top: 10rpx;
+    color: #888;
+    display: flex;
+}
+
+.nav {
+    display: flex;
+    padding: 20rpx;
+    background-color: #fff;
+}
+
+.nav .item {
+    flex: 1;
+    background-color: #fff;
+    padding: 0 20rpx;
+
+}
+
+.nav .item image {
+    height: 150rpx;
+    width: 100%;
+}

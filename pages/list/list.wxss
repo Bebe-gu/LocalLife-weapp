@@ -1,0 +1,41 @@
+/* pages/list/list.wxss */
+.list-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #444;
+}
+
+.list-text {
+  font-size: 20rpx;
+  color: #888;
+}
+
+.count {
+  background-color: rgb(245, 165, 119);
+  color: #fff;
+  border-radius: 30rpx;
+  width: 60rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  margin-left: 20rpx;
+
+}
+
+.loading {
+  text-align: center;
+  margin: 20rpx;
+}
+
+.loading .loading-text {
+
+  color: #888;
+  font-size: 24rpx;
+}
+
+.nomore {
+  margin: 20rpx;
+  text-align: center;
+  color: #888;
+  font-size: 24rpx;
+}
