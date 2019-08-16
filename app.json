@@ -12,7 +12,7 @@
   "window": {
     "backgroundColor": "#ccc",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#3a4861",
+    "navigationBarBackgroundColor": "#608ff5",
     "navigationBarTitleText": "本地生活",
     "navigationBarTextStyle": "white"
   },
