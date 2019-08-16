@@ -12,7 +12,11 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     fetch(`categories/${options.cat}`).then(res => {
+      wx.hideLoading()
       this.setData({
         catetory: res.data
       })
@@ -24,6 +28,7 @@ Page({
     })
   },
   onReady: function () {
+   
     if (this.data.catetory.name) {
       wx.setNavigationBarTitle({
         title: this.data.catetory.name

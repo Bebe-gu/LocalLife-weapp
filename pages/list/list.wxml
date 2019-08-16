@@ -21,7 +21,7 @@
     </view>
     <view class="page_bd">
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{shops}}" wx:key="{{item.id}}">
+            <navigator url="/pages/detail/detail?item={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{shops}}" wx:key="{{item.id}}">
                 <view class="weui-cell__hd">
                     <image src="{{item.images[0]}}" style="margin-right: 15px;vertical-align: middle;width:60px; height: 60px;"></image>
                 </view>

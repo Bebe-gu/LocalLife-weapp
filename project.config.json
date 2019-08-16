@@ -48,13 +48,27 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "列表",
 					"pathName": "pages/list/list",
 					"query": "cat=1",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
+					"query": "item=1",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/message/message",
+					"pathName": "pages/message/message",
+					"query": "",
 					"scene": null
 				}
 			]
