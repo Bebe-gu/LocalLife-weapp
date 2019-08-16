@@ -2,4 +2,4 @@
 
  + 微信小程序(未完成...)
 
- + ![img]('assets/locallife-weapp.png')  
+ + ![locallife]('https://github.com/Bebe-gu/LocalLife-weapp/blob/master/assets/locallife-weapp.png')  
