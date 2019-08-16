@@ -6,7 +6,7 @@ Page({
     inputVal: "",
     catetory: {},
     shops: [],
-    page: 1,
+    page: 0,
     pageSzie: 20,
     hasMore: true
   },
@@ -20,7 +20,7 @@ Page({
         title: res.data.name
       })
       //调用加载数据函数
-      this.loadMore(this.data.page)
+      this.loadMore()
     })
   },
   onReady: function () {
@@ -35,30 +35,68 @@ Page({
     this.setData({
       page: this.data.page + 1
     })
-    this.loadMore(this.data.page);
+    this.loadMore()
 
   },
   //加载更多
-  loadMore: function (page) {
-    fetch(`categories/${this.data.catetory.id}/shops`, { _page: page, _limit: this.data.pageSzie })
+  loadMore: function () {
+    // if (!this.data.hasMore) return
+    return fetch(`categories/${this.data.catetory.id}/shops`, { _page: this.data.page, _limit: this.data.pageSzie })
       .then(res => {
         const totalCount = parseInt(res.header['X-Total-Count'])
         //追加页面数据
         const shops = this.data.shops.concat(res.data)
-        const hasMore = page * this.data.pageSzie < totalCount
+        const hasMore = this.data.page * this.data.pageSzie < totalCount
         this.setData({
           shops: shops,
           hasMore: hasMore
         })
       })
   },
+
+  //下拉刷新
+  onPullDownRefresh: function () {
+    this.setData({
+      shops: [],
+      page: 0
+    })
+    this.loadMore().then(() => wx.stopPullDownRefresh())
+  },
+  //搜索
+  searchHandle: function () {
+    fetch(`categories/${this.data.catetory.id}/shops`, { _page: this.data.page, _limit: this.data.pageSzie, q: this.data.inputVal }).then(res => {
+      const searchResultCount = parseInt(res.header['X-Total-Count'])
+      console.log(res.data);
+      if (res.data == '') {
+        wx.showToast({
+          title: '没有搜索结果',
+          icon: 'none',
+          duration: 1500
+        })
+        this.setData({
+          hasMore: true,
+          shops: []
+        })
+        if (searchResultCount < this.data.pageSzie) {
+          this.setData({
+            hasMore: false
+          })
+        }
+        return false
+      }
+      this.setData({
+        shops: res.data
+      })
+    })
+  },
   showInput: function () {
     this.setData({
       inputShowed: true
     });
   },
-
+  //点击取消恢复数据
   hideInput: function () {
+    this.loadMore()
     this.setData({
       inputVal: "",
       inputShowed: false
@@ -69,6 +107,7 @@ Page({
       inputVal: ""
     });
   },
+  //搜索输入
   inputTyping: function (e) {
     this.setData({
       inputVal: e.detail.value
